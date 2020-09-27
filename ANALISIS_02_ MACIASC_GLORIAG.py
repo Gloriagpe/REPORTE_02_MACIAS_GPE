@@ -1,3 +1,4 @@
+#CODE_ANALISIS_02
 import csv #Importacion de mi archivo csv
 lista_general=[] #creo una lista vacia de mis datos en genral
 with open('synergy_logistics_database.csv', 'r') as archivo_csv:  #Abriendo mi archivo csv en modo lectura
@@ -15,15 +16,14 @@ def menu_opciones():#definiendo el menu de opciones
 menu_opciones() #llamando a la funcion de menu de opciones
 opcion=int(input('\nELIGE UNA OPCION:\n''\n1.-Rutas de Exportacion\n:''\n2.-Rutas de Importacion\n:''\n3.-Medios de Transporte de Exports\n:''\n4.-Medios de Transporte de Importacion\n:'))
 if opcion ==1: #if de la opcion 1
- with open("Rutas_export.txt","r") as archivo:
-     Rutas_exports= archivo.read()
-     print("Las Rutas de exportacion mas comercializadas son:", Rutas_exports)
-
+  dict_rexports={'South Korea', 'Vietnam', 497,'Netherlands', 'Belgium', 437,'USA', 'Netherlands', 436, 'China', 'Mexico', 330, 'Japan', 'Brazil', 306, 'Germany', 'France', 299, 'South Korea', 'Japan', 279,'Australia', 'Singapore', 273, 'Canada', 'Mexico', 261,'China', 'Spain', 250} #generando mi diccionario de exports
+  print("Las Rutas de exportacion mas comercializadas son:",dict_rexports) #imprimiendo el diccionario de exportaciones
+#El anterior diccionario fue generada apartir de la lista de referencia-conteo-rutas es la lista del conteo de exports
 elif opcion ==2:#elif para la opcion 2
-    
- with open("Lista_impt.txt","r") as archivo_txt: #abriendo mi archivo de txt donde esta la lista para mostrar 
-     Rutas_importaciones= archivo_txt.read() #leyendo el archivo txt
-     print("Las Rutas de importacion mas comercializadas son\n:", Rutas_importaciones)
+    dict_rimportaciones={'Singapore destino: Thailand','Germany destino: China', 'China destino: Japan', 
+ 'Japan destino:Mexico', 'China destino: Thailand', 'Malaysia destino: Thailand','Spain destino: Germany','Mexico destino: USA','China destino: United Arab Emirates','Brazil destino: China'} #generando mi diccionario de importaciones
+    print("Las Rutas de importacion mas comercializadas son\n:", dict_rimportaciones) #mandando a imprimir mi diccionario
+#El anterior diccionario fue generada apartir de la lista de referencia-"count_rImport" es la lista del conteo de las importaciones
 
 def add_comentarios(): #definiendo mi fncion de mas opciones
     print('\nSi tienes alguna duda o sugerencia podrias solicitar asesoramiento al numero:000000\n:') #comentarle al usuario que tiene tambien la opcion 3 y4
@@ -34,9 +34,9 @@ if opcion==3: #condicional de opcion 3
       Transporte_exports= archivo.read() #lectura de mi archivo txt
       print("Los 3 Medios de transporte mas usados para exportar son:\n",Transporte_exports)
 elif opcion==4: #condicional de opcion 4
-    with open("Mediost_imp.txt","r") as archivo_txt: #abriendo archivo txt de lista de transporte
-        Transporte_importaciones= archivo_txt.read() #leyebdo el txt
-        print('Los 3 medios de transporte mas utilizados para importar fueron:\n',Transporte_importaciones)
+    with open("Mediost_imp.txt","r") as dict_transporte: #abriendo archivo txt de lista de transporte
+        dict_txt= dict_transporte.read() #leyebdo el txt
+        print('Los 3 medios de transporte mas utilizados para importar fueron:\n',dict_txt)
 else: #si no sucede lo anterior entonces que imprima lo siguiente
     print('\nError de introduccion de opcion: vuelve a intentarlo, gracias\n:') #no hay mas opciones
 
@@ -46,7 +46,7 @@ contador = 0 #Contador uno=0
 list_exports=[] #creando lista vacia donde iran las exportaciones en general
 rutas_contadas=[] #Creando una lista vacia para contar las rutas en general
 conteo_rutas=[]   #Lista vacia para el conteo de rutas totales de exportacion
-
+# lista conteo rutas fue usada de referencia para crear mi lista de las 10 rutas de exports mas comercializadas
 for valor in lista_general:  #valor  de mi lista con los  datos en general
     if valor [1]=='Exports': #if donde se indicara el valor  con el index 1 es exactamente igual a direccion
         list_exports.append(valor) #a mi lista vacia le agrego los valores 
@@ -64,13 +64,15 @@ for ruta in rutas_contadas: #for de rutas y conteo
 conteo_rutas.sort(reverse=True, key= lambda x:x[2]) #ordenando de mayor a menor mi lista con sort.reverse ylamda 
 
 #print ('\nLISTA DE RUTAS DE EXPORTACION MAS UTILIZADAS\n:')
-#print(conteo_rutas[0:10]) #Imprimiendo las 10 rutas mas comercalizadas para exportar
+#print(conteo_rutas[0:10]) #Imprimiendo las 10 rutas mas comercializadas para exportar
 
 #GENERACION DE LA LISTA DE RUTAS A IMPORTAR 
 direction ="importac" #Definiendo imports
 importaciones=[] #creando lista vacia de importaciones
 rutas_countimp=[] #Creando una lista vacia para contar las rutas de importacion
 count_rImport=[]   #Lista vacia para el conteo de rutas totales
+#esta lista de conunt_rImport fue usada como referencia para crear mi lista de las rutas mas comercializadas en importaciones
+
 for valor in lista_general:  #valor  de mi lista con los  datos en general
     if valor [1]=='Imports': #se indica el index 1 es exactamente igual a direccion
        importaciones.append(valor) #a mi lista vacia le agrego los valores 
@@ -152,7 +154,7 @@ with open('list_exp.csv', 'r') as archivo:  #Abriendo mi archivo csv en modo lec
            if linea[2]==transport:  
                contador+=1 #contador de sumatoria
 transport_Rail.append([transport,contador])  ##agregando datos a la lista con el tipo de tranporte que me interesa
-contador=0
+contador=0 #contador 
 #print(transport_Rail) #imprimiendo mi lista de transporte 
 
 #TRANSPORTE ROAD IN EXPORTS
@@ -287,7 +289,7 @@ conteo_paises.sort(reverse=True, key= lambda x:x[2]) #ordenando la lista de los 
 #En este caso de exports se toman en cuenta paises de origen
 with open("Exp_valuepaises.txt","r") as archivo: #abriendo mi archivo de txt donde se encuentra la lista con los paises con mayor valor sacada de la lista conteo_paises
      expt_p= archivo.read() #leyendo mi archivo txt 
-#     print("\nLista del valor total\n:", expt_p)#mandando a imprimir el txt
+     #print("\nLista del valor total en exportaciones datos apartir  de lista de referencia conteo_paises \n:", expt_p)#mandando a imprimir el txt
 # LISTA DE VALOR TOTAL DE EXP APARTIR DE CONTEO PAISES 
 #NOTA LA LISTA DE REFERENCIA DE ESTA LIST INCLUYE LA FILTRACION Y CONTEO DE PAISES QUE GENERAN EL 80% DE MAS VALOR
 
@@ -296,7 +298,7 @@ def infExp_Synergy(): #definiendo mi funcion de la informacion que mumestra Syne
 infExp_Synergy() #llamando a la funcion para que esta sea ejecutada
 
 def dicc_valorexp(): #definiendo mi funcion de diccionario donde iran los valores 
-    print('\n Lista de paises con mas valor total en las exportaciones, siendo informacion por default de la empresa:\n') #imprimiendo el diccionario de mi lista de paises y sus valores de las exports
+    print('\n Lista de paises que generan el 80% del valor total en las exportaciones, siendo informacion por default de la empresa:\n') #imprimiendo el diccionario de mi lista de paises y sus valores de las exports
 dicc_valorexp() #llamando a mi funcion diccionario
 
 dict_naciones={'Australia', 'United Kingdom', 'USA','China', 'United Kingdom', 
@@ -336,19 +338,15 @@ for pais in actual_paisim: #for de pais en lista paisa importacion y conteo
 #se toman en cuenta los valores de mi lista llamada total_vpImp
 with open("Import_value.txt","r") as archivo: #abriendo mi archivo de txt donde se encuentra la lista con los paises con mayor valor sacada de la lista conteo_paises
      imp_val= archivo.read() #leyendo mi archivo txt 
-# print("\nLista del valor total_imp\n:", imp_val)#mandando a imprimir el txt
-#def lvalores_exports(): #definiendo la lista donde se encuentran los paises con mayores valorestotales
-#    print("\nLista del valor total\n:", imp_val)#mandando a imprimir el txt
-     
+#LISTAS GENERADAS DE LA INFORMACION INCLUIDA EN LISTAS DE REFERENCIA 
+#print("\nLista del valor total en importaciones-datos apartir de lista de referencia total_vpImp\n:", imp_val)#mandando a imprimir el txt
+ 
 #NOTA LA LISTA DE REFERENCIA EN ESTE CASO IGUAL ESTA FILTRADA YA POR VALORES MAYORES Y EL CONTEO DEL TOTAL DE REPETICIONES
 # LA LISTA DE REFERENCIA SE CREO ANTERIORMENTE Y ES LA LISTA TOTAL_VPIMP
 #GENERACION DE PAISES CON MAYOR VALOR EN IMPRTACIONES 
 #NOTA LA LISTA DE REFERENCIA EN ESTE CASO ES total_vpImp de la cual saque los valores de mayor valor y los exporte a una lista txt
 #EN ESTA LISTA ES INCLUYE EL PAIS DE DESTINO, VALOR TOTAL Y N-VECES DE REPET
 
-def informacion_Synergy(): #creando mi funcion de la informacion general que muestra Synergy
-    print('\nSe te mostrara el listado de la lista de los paises que generan el 80% de valor_total en las exports, informacion por default\n:')
-informacion_Synergy() #mandando llamanr mi funcion de informacion general de valores de imports en paises
 def valor_Importaciones(): #definiendo valor de las importaciones
     print('\n Lista de paises que generan el 80% del valor total en las importaciones, esta es informacion por default de la empresa\n:')  
 valor_Importaciones() #llamando la funcion para que se ejecute
