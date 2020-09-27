@@ -8,13 +8,13 @@ with open('synergy_logistics_database.csv', 'r') as archivo_csv:  #Abriendo mi a
                 lista_general.append(linea) #a la lista vacia le agrego los datos
                 #print(linea) #impresion de la lista
 #print(lista_general[0])
-def bienvenida(mensaje='\nBienvenido a Synergy Logistics\n:'): #definiendo mi funcion de bienvenida en el menu
-    print ('\nBienvenido a Synergy Logistics\n:') #impprimiendo lo que quiero que diga
+def bienvenida(mensaje='\nBienvenido a Synergy Logistics:\n'): #definiendo mi funcion de bienvenida en el menu
+    print ('\nBienvenido a Synergy Logistics:\n') #impprimiendo lo que quiero que diga
 bienvenida() #mandando llamar mi funcion
 def menu_opciones():#definiendo el menu de opciones
-    print('\nMENU DE OPCIONES\n:') #imprimiendo el menu de las opciones disponibles
+    print('\nMENU DE OPCIONES:\n') #imprimiendo el menu de las opciones disponibles
 menu_opciones() #llamando a la funcion de menu de opciones
-opcion=int(input('\nELIGE UNA OPCION:\n''\n1.-Rutas de Exportacion\n:''\n2.-Rutas de Importacion\n:''\n3.-Medios de Transporte de Exports\n:''\n4.-Medios de Transporte de Importacion\n:'))
+opcion=int(input('\nELIGE UNA OPCION:\n''\n1.-Rutas de Exportacion:\n''\n2.-Rutas de Importacion:\n''\n3.-Medios de Transporte de Exports:\n''\n4.-Medios de Transporte de Importacion:\n'))
 if opcion ==1: #if de la opcion 1
   dict_rexports={'South Korea', 'Vietnam', 497,'Netherlands', 'Belgium', 437,'USA', 'Netherlands', 436, 'China', 'Mexico', 330, 'Japan', 'Brazil', 306, 'Germany', 'France', 299, 'South Korea', 'Japan', 279,'Australia', 'Singapore', 273, 'Canada', 'Mexico', 261,'China', 'Spain', 250} #generando mi diccionario de exports
   print("Las Rutas de exportacion mas comercializadas son:",dict_rexports) #imprimiendo el diccionario de exportaciones
@@ -22,11 +22,11 @@ if opcion ==1: #if de la opcion 1
 elif opcion ==2:#elif para la opcion 2
     dict_rimportaciones={'Singapore destino: Thailand','Germany destino: China', 'China destino: Japan', 
  'Japan destino:Mexico', 'China destino: Thailand', 'Malaysia destino: Thailand','Spain destino: Germany','Mexico destino: USA','China destino: United Arab Emirates','Brazil destino: China'} #generando mi diccionario de importaciones
-    print("Las Rutas de importacion mas comercializadas son\n:", dict_rimportaciones) #mandando a imprimir mi diccionario
+    print("Las Rutas de importacion mas comercializadas son:\n", dict_rimportaciones) #mandando a imprimir mi diccionario
 #El anterior diccionario fue generada apartir de la lista de referencia-"count_rImport" es la lista del conteo de las importaciones
 
-def add_comentarios(): #definiendo mi fncion de mas opciones
-    print('\nSi tienes alguna duda o sugerencia podrias solicitar asesoramiento al numero:000000\n:') #comentarle al usuario que tiene tambien la opcion 3 y4
+def add_comentarios(): #definiendo mi funcion para agregar algun comentario o sugerencia por parte del ususario
+    print('\nSi tienes alguna duda o sugerencia podrias solicitar asesoramiento al numero:000000:\n') #comentarle al usuario que tiene tambien la opcion 3 y4
 add_comentarios() #llamando mi funcion de comentarios
 
 if opcion==3: #condicional de opcion 3
@@ -38,7 +38,7 @@ elif opcion==4: #condicional de opcion 4
         dict_txt= dict_transporte.read() #leyebdo el txt
         print('Los 3 medios de transporte mas utilizados para importar fueron:\n',dict_txt)
 else: #si no sucede lo anterior entonces que imprima lo siguiente
-    print('\nError de introduccion de opcion: vuelve a intentarlo, gracias\n:') #no hay mas opciones
+    print('\nError de introduccion de opcion: vuelve a intentarlo, gracias:\n') #no hay mas opciones
 
 #GENERACION DE RUTAS ESPORTS
 direction ="exportaciones" #Definiendo la variable que me interesa analizar en este caso exp
@@ -348,7 +348,7 @@ with open("Import_value.txt","r") as archivo: #abriendo mi archivo de txt donde 
 #EN ESTA LISTA ES INCLUYE EL PAIS DE DESTINO, VALOR TOTAL Y N-VECES DE REPET
 
 def valor_Importaciones(): #definiendo valor de las importaciones
-    print('\n Lista de paises que generan el 80% del valor total en las importaciones, esta es informacion por default de la empresa\n:')  
+    print('\n Lista de paises que generan el 80% del valor total en las importaciones, esta es informacion por default de la empresa:\n')  
 valor_Importaciones() #llamando la funcion para que se ejecute
 
 #creando un diccionario para imprimir los paises que generan el 80% de valor a Synergy
@@ -356,8 +356,5 @@ dict={'Thailand','China','Japan','Canada','Germany','Mexico','Poland','United Ar
 print(dict) #imprimiendo el diccionario
 
 def salida_synergy(): #definiendo mi funcion de salida 
-    print('\nFue un gusto atenderte!: Vuelve Pronto\n:') #mensaje que se mostrara al salir
+    print('\nFue un gusto atenderte!: Vuelve Pronto:\n') #mensaje que se mostrara al salir
 salida_synergy() #llamando a mi funcion salida para que se ejecute
-
-            
-        
