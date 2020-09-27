@@ -1,0 +1,5 @@
+['Singapore', 'Thailand', 273],['Germany', 'China', 233], ['China', 'Japan', 210], 
+['Japan', 'Mexico', 206], ['China', 'Thailand', 200], ['Malaysia', 'Thailand', 195], 
+['Spain', 'Germany', 142], ['Mexico', 'USA', 122], ['China', 'United Arab Emirates',114], 
+['Brazil', 'China', 113]]
+

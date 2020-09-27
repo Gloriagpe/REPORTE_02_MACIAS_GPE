@@ -1,0 +1,10 @@
+[['South Korea', 'Vietnam', 497],
+ ['Netherlands', 'Belgium', 437], 
+ ['USA', 'Netherlands', 436], 
+ ['China', 'Mexico', 330], 
+ ['Japan', 'Brazil', 306], 
+ ['Germany', 'France', 299], 
+ ['South Korea', 'Japan', 279],
+ ['Australia', 'Singapore', 273], 
+ ['Canada', 'Mexico', 261]
+['China', 'Spain', 250]]
